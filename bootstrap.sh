@@ -33,7 +33,7 @@ if [ "$NAME" = "Debian" ] || [ "$NAME" = "Debian GNU/Linux" ]; then
   $SUDO_CMD echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  $SUDO_CMD tee /etc/apt/sources.list.d/docker.list > /dev/null
   $SUDO_CMD apt-get -qq update
   $SUDO_CMD apt-get -qq install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
   $SUDO_CMD apt-get install -qq wget vim less git nfs-common
@@ -49,7 +49,7 @@ elif [ "$NAME" = "Ubuntu" ]; then
     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
     $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  sudo apt-get update
+  $SUDO_CMD apt-get update
   $SUDO_CMD apt-get install -qq docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
   $SUDO_CMD apt-get install -qq wget vim less git nfs-common
 
@@ -99,10 +99,16 @@ if [ ! -d /osc ]; then
   $SUDO_CMD mkdir /osc
 fi
 
+echo "Taking backup of /etc/fstab"
+$SUDO_CMD cp /etc/fstab /etc/fstab.backup
 if ! ($SUDO_CMD grep -q '/osc' /etc/fstab);
 then
   echo "Creating /etc/fstab entry for NFS mount"
-  echo "fs-0abca58dcce09a51a.efs.eu-west-2.amazonaws.com:/                        /osc         nfs4   defaults,noatime  0   0" | $SUDO_CMD tee -a >> /etc/fstab
+  $SUDO_CMD cp /etc/fstab /tmp/fstab
+  $SUDO_CMD chmod a+w /tmp/fstab
+  echo "fs-0abca58dcce09a51a.efs.eu-west-2.amazonaws.com:/                        /osc         nfs4   defaults,noatime  0   0" >> /tmp/fstab
+  $SUDO_CMD mv /tmp/fstab /etc/fstab
+  $SUDO_CMD chmod og-w /etc/fstab
 fi
 
 if [ ! -d /osc/data-extraction ]; then
