@@ -117,8 +117,8 @@ The function that performs the processing is defined as:
 
 ```console
 _process_files() {
- echo "Processing: $1"
- sleep 3
+    echo "Processing: $1"
+    sleep 3
 }
 ```
 
