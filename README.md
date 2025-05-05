@@ -28,6 +28,14 @@ Scripts to build/deploy the OS-Climate data extraction tooling
 
 ## bootstrap.sh
 
+SSH to the EC2 instance, download the bootstrap.sh script, then run it:
+
+```console
+wget https://raw.githubusercontent.com/os-climate/osc-data-extraction-scripts/refs/heads/main/bootstrap.sh
+chmod a+x bootstrap.sh
+./bootstrap.sh
+```
+
 This script will take a vanilla EC2 server instance running the Linux operating
 system and install Docker. Subsequent steps will mount a pre-determined EFS/NFS
 volume which contains the raw PDF data set collected/aggregated by the
