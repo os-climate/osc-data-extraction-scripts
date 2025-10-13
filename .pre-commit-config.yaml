@@ -79,7 +79,7 @@ repos:
         args: ["-x"] # Check external files
 
   - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
-    rev: 2773c7d04be5d0ceb075f215b6d0a4eacd4a432b  # frozen: v1.7.8.24
+    rev: 2773c7d04be5d0ceb075f215b6d0a4eacd4a432b # frozen: v1.7.8.24
     hooks:
       - id: actionlint
 
@@ -94,14 +94,14 @@ repos:
           ]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: f9351c924055bf6c7b4a4670237d3ce141e9f57c  # frozen: v0.14.0
+    rev: f9351c924055bf6c7b4a4670237d3ce141e9f57c # frozen: v0.14.0
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix, --config=pyproject.toml]
       - id: ruff-format
 
   - repo: https://github.com/fsfe/reuse-tool
-    rev: 9245cd26448e246cda84f70711cc9d5f970855d6  # frozen: v6.1.2
+    rev: 9245cd26448e246cda84f70711cc9d5f970855d6 # frozen: v6.1.2
     hooks:
       - id: reuse
 
