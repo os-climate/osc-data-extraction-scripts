@@ -56,7 +56,7 @@ repos:
         args: ["--no-error-on-unmatched-pattern", "--ignore-unknown"]
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: e72a3ca1632f0b11a07d171449fe447a7ff6795e  # frozen: v0.48.0
+    rev: e72a3ca1632f0b11a07d171449fe447a7ff6795e # frozen: v0.48.0
     hooks:
       - id: markdownlint
         args: ["--fix"]
@@ -79,12 +79,12 @@ repos:
         args: ["-x"] # Check external files
 
   - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
-    rev: 694e2c0dfb4253d51f3c6c54b8f9fec0a16764dc  # frozen: v1.7.11.24
+    rev: 694e2c0dfb4253d51f3c6c54b8f9fec0a16764dc # frozen: v1.7.11.24
     hooks:
       - id: actionlint
 
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: cba56bcde1fdd01c1deb3f945e69764c291a6530  # frozen: v1.38.0
+    rev: cba56bcde1fdd01c1deb3f945e69764c291a6530 # frozen: v1.38.0
     hooks:
       - id: yamllint
         args:
@@ -94,7 +94,7 @@ repos:
           ]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: aca6d4c8045a504e2812ea4bedff1d0a09e437bc  # frozen: v0.15.8
+    rev: aca6d4c8045a504e2812ea4bedff1d0a09e437bc # frozen: v0.15.8
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix, --config=pyproject.toml]
